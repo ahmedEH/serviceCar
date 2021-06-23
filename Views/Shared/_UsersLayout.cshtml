@@ -68,10 +68,7 @@
                         </a> 
                         
                     }
-                    <a href="#" class="nav_link active"> 
-                         
-                        <span class="nav_name">Dashboard</span> 
-                    </a>
+
                     @if (isadmin=="True")
                     {
                         <a asp-controller="Vehicle" asp-action="Index" class="nav_link active"> 
@@ -82,40 +79,106 @@
                     }
                     else{
                         
-                        <a asp-controller="Vehicle" asp-action="Detailscon" asp-router-id="@iduser" class="nav_link active"> 
+                        <a asp-controller="Vehicle" asp-action="Details" asp-router-id="@iduser" class="nav_link active"> 
                         <i class='bx bx-grid-alt nav_icon'></i> 
                         <span class="nav_name">My Vehicle</span> 
                         </a> 
                         
                     } 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-user nav_icon'></i> 
-                        <span class="nav_name">Depenses</span> 
-                    </a> 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-message-square-detail nav_icon'></i> 
-                        <span class="nav_name">Accident</span> 
-                    </a> 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-bookmark nav_icon'></i> 
-                        <span class="nav_name">Services</span> 
-                    </a> <a href="#" class="nav_link"> 
-                        <i class='bx bx-folder nav_icon'></i> 
-                        <span class="nav_name">Plan d'entretien</span> 
-                    </a> 
-                    <a href="#" class="nav_link"> 
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i> 
-                        <span class="nav_name">Defaut</span> 
-                    </a> 
+
+
+                    @if (isadmin=="True")
+                    {
+                        <a asp-controller="VehicleBc" asp-action="Index" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Buy Contracts</span>
+                        </a> 
+                        
+                    }
+                    else{
+                        
+                        <a asp-controller="VehicleAccident" asp-action="Index" asp-router-id="@iduser" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Accidents</span> 
+                        </a> 
+                        
+                    }
+
+                    @if (isadmin=="True")
+                    {
+                        <a asp-controller="VehicleAccident" asp-action="Index" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Accidents</span>
+                        </a> 
+                        
+                    }
+                    else{
+                        
+                        <a asp-controller="VehicleFuel" asp-action="Index" asp-router-id="@iduser" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Vehicle Fuel</span> 
+                        </a> 
+                        
+                    }
+
+
+                    @if (isadmin=="True")
+                    {
+                        <a asp-controller="VehicleMp" asp-action="Index" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Maintenance plan</span>
+                        </a> 
+                        
+                    }
+                    else{
+                        
+                        <a asp-controller="VehicleMp" asp-action="Index" asp-router-id="@iduser" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Maintenance Plan</span> 
+                        </a> 
+                        
+                    }
+                    @if (isadmin=="True")
+                    {
+                        <a asp-controller="VehicleReparation" asp-action="Index" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Reparation</span>
+                        </a> 
+                        
+                    }
+                    else{
+                        
+                        <a asp-controller="VehicleReparation" asp-action="Details" asp-router-id="@iduser" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Reparation</span> 
+                        </a> 
+                        
+                    }
+
+                    @if (isadmin=="True")
+                    {
+                        <a asp-controller="VehicleFuel" asp-action="Index" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Fuel spending</span>
+                        </a> 
+                        
+                    }
+                    else{
+                        
+                        
+                    }
+
+                    <a asp-controller="Home" asp-action="Logout" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+
                 </div>
-            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+            </div> 
         </nav>
     </div>
 
 
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody();
+            @RenderBody()
         </main>
     </div>
     <br/>
