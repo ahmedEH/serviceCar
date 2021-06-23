@@ -18,16 +18,16 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post"enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="VehicleConductor" class="control-label"></label>
                 <select asp-for="VehicleConductor" class ="form-control" asp-items="ViewBag.VehicleConductor"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Img" class="control-label"></label>
-                <input asp-for="Img" class="form-control" />
-                <span asp-validation-for="Img" class="text-danger"></span>
+
+                <input type="file" name="img" class="form-control" required />
+
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
