@@ -26,7 +26,7 @@ CREATE TABLE `__efmigrationshistory` (
   `MigrationId` varchar(95) NOT NULL,
   `ProductVersion` varchar(32) NOT NULL,
   PRIMARY KEY (`MigrationId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `conductor` (
   `active` bit(1) NOT NULL,
   PRIMARY KEY (`user`) USING BTREE,
   CONSTRAINT `conductor_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `user` (
   `password` varchar(64) NOT NULL,
   `is_admin` bit(1) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE `vehicle` (
   PRIMARY KEY (`id_vehicle`),
   KEY `vehicle_conductor` (`vehicle_conductor`),
   CONSTRAINT `vehicle_ibfk_1` FOREIGN KEY (`vehicle_conductor`) REFERENCES `conductor` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `vehicle_accident` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id_vehicle_ac`) USING BTREE,
   CONSTRAINT `vehicle_accident_ibfk_1` FOREIGN KEY (`id_vehicle_ac`) REFERENCES `vehicle` (`id_vehicle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +166,7 @@ CREATE TABLE `vehicle_breakdown` (
   PRIMARY KEY (`id_breakdown`),
   KEY `id_vehicle_bd` (`id_vehicle_bd`),
   CONSTRAINT `vehicle_breakdown_ibfk_1` FOREIGN KEY (`id_vehicle_bd`) REFERENCES `vehicle` (`id_vehicle`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `vehicle_buy_contract` (
   `tva` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id_vehicle_bc`) USING BTREE,
   CONSTRAINT `vehicle_buy_contract_ibfk_1` FOREIGN KEY (`id_vehicle_bc`) REFERENCES `vehicle` (`id_vehicle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +221,7 @@ CREATE TABLE `vehicle_fuel` (
   `quantity` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_sp_fu`) USING BTREE,
   CONSTRAINT `vehicle_fuel_ibfk_1` FOREIGN KEY (`id_sp_fu`) REFERENCES `vehicle_spending` (`id_sp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,7 +258,7 @@ CREATE TABLE `vehicle_general_info` (
   `fuel_type` enum('DIESEL','ESSENCE','HYBRIDE','ELECTRIQUE') NOT NULL,
   PRIMARY KEY (`id_vehicle_gi`) USING BTREE,
   CONSTRAINT `vehicle_general_info_ibfk_1` FOREIGN KEY (`id_vehicle_gi`) REFERENCES `vehicle` (`id_vehicle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -283,7 +283,7 @@ CREATE TABLE `vehicle_maintenance_plan` (
   `description` text NOT NULL,
   PRIMARY KEY (`id_vehicle_mp`) USING BTREE,
   CONSTRAINT `vehicle_maintenance_plan_ibfk_1` FOREIGN KEY (`id_vehicle_mp`) REFERENCES `vehicle` (`id_vehicle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -309,7 +309,7 @@ CREATE TABLE `vehicle_reparation` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id_vehicle_re`) USING BTREE,
   CONSTRAINT `vehicle_reparation_ibfk_1` FOREIGN KEY (`id_vehicle_re`) REFERENCES `vehicle` (`id_vehicle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,7 +337,7 @@ CREATE TABLE `vehicle_services` (
   `end_date` datetime NOT NULL,
   PRIMARY KEY (`id_vehicle_se`) USING BTREE,
   CONSTRAINT `vehicle_services_ibfk_1` FOREIGN KEY (`id_vehicle_se`) REFERENCES `vehicle` (`id_vehicle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +369,7 @@ CREATE TABLE `vehicle_spending` (
   KEY `id_conductor_sp` (`id_conductor_sp`),
   CONSTRAINT `vehicle_spending_ibfk_1` FOREIGN KEY (`id_vehicle_sp`) REFERENCES `vehicle` (`id_vehicle`),
   CONSTRAINT `vehicle_spending_ibfk_2` FOREIGN KEY (`id_conductor_sp`) REFERENCES `conductor` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
